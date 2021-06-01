@@ -4,77 +4,100 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
-    </style>
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Ballet&display=swap');
-    </style>
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-    </style>
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Shojumaru&display=swap');
-    </style>
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
-    </style>
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <title>Canvas Course</title>
+    <title>bevoice analytics</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+
+    <script>
+      function SubForm (){
+          $.ajax({
+              url:'https://api.apispreadsheets.com/data/13297/',
+              type:'post',
+              data:$("#emailform").serializeArray(),
+              success: function(){
+                alert("Thank you, we will contact you soon :)")
+              },
+              error: function(){
+                alert("There was an error :(")
+              }
+          });
+      }
+    </script>
   </head>
   <body>
-      <div id="stage"></div>
+      <div id="root">
+        <div class="main_container">
+          <div class="language">
+            <button class="btn_language">English <i class="fas fa-arrow-down"></i></button>
+          </div>
+          <img src="images/logobevoice.png" alt="bevoice">
+          <p id="subtitle">The power of voice analytics in your hands.</p>
+          <div class="date">
+            <span>Release date: June 15th</span>
+          </div>
+          <div class="horizontal_separator"></div>
+          <p id="textform">If you want to know first or need more information, </br>please fill out this form:</p>
+          <form id="emailform" action="#">
+            <div class="input_container">
+              <input id="email" name="email" class="email" type="text" placeholder="Tell us your email" onkeydown="validation()">
+              <button 
+                id="btn_submit" 
+                class="btn_submit" 
+                type="submit"
+                disabled="disabled"
+                onclick="SubForm()"
+              >
+              <i class="fas fa-arrow-circle-right"></i>
+            </button>
+            </div>
+          </form>
+          <span id="validation_msg"></span>
+        </div>
+      </div>
 
-      <script 
-        src="https://cdn.jsdelivr.net/npm/pixi.js-legacy@5.3.7/dist/pixi-legacy.min.js" 
-        integrity="sha256-znxy9dcwi+Q0vCzCtoZ6mlsdFMezt7m/IlDLqSvH060=" 
-        crossorigin="anonymous"
-      ></script>
-        <script type="text/javascript">
-        const PIXILegacy = PIXI;
-        </script>
+      <script type="text/javascript">
+        function validation()
+          {
+            var form = document.getElementById("emailform");
+            var email = document.getElementById("email").value;
 
-      <script 
-        src="https://cdn.jsdelivr.net/npm/pixi.js@5.3.7/dist/pixi.min.js" 
-        integrity="sha256-kraYJiQN21Z9BbGRczdjvDL7nznrJohivxvUMOgJj8o=" 
-        crossorigin="anonymous"
-        >
+            var validation_msg = document.getElementById("validation_msg");
+            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            var button = document.getElementById("btn_submit");
+            console.log(btn_submit);
+
+            if (email.match(pattern))
+            {
+              form.classList.add("valid");
+              form.classList.remove("invalid");
+              validation_msg.innerHTML = "";
+              button.disabled = false;
+
+            } else {
+              form.classList.remove("valid");
+              form.classList.add("invalid");
+              validation_msg.innerHTML = "Please Enter a Valid Email Address"
+              validation_msg.style.color = "#8B0000";
+              button.disabled = true
+            }
+            if (email == "")
+            {
+              form.classList.remove("valid");
+              form.classList.remove("invalid");
+              validation_msg.innerHTML = "";
+              validation_msg.style.color = "#00CC00";
+              button.disabled = true;
+            }
+          }
       </script>
-
-      <script 
-        src="https://cdn.jsdelivr.net/npm/gsap@3.6.0/dist/gsap.min.js" 
-        integrity="sha256-0+1stGa9ZU/jbFf6rLHIitTieTCHQx1v/FNmlhpMl48=" 
-        crossorigin="anonymous"
-      >
-      </script>
-
-      <script 
-        src="https://cdn.jsdelivr.net/npm/gsap@3.6.0/dist/PixiPlugin.min.js" 
-        integrity="sha256-+kuGJv7BiwEeMgQQ+idx03aARIMZzt2q5uHO4bcct8c=" 
-        crossorigin="anonymous"
-      >
-      </script>
-
-      <script 
-        src="https://cdn.jsdelivr.net/npm/fontfaceobserver@2.1.0/fontfaceobserver.standalone.js" 
-        integrity="sha256-fhre4iYmFiwPsIkJajvUGcWlfVAEPjG/bnsuopL2NB8=" 
-        crossorigin="anonymous"
-      >
-      </script>
-
-
-      <script type="text/javascript" src="setups/setup-v3.js"></script>
-      <script type="text/javascript" src="animations/assignment-04.js"></script>
 
   </body>
 </html>

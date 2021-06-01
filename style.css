@@ -1,10 +1,151 @@
-html, body {
-    background-color: #111;
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  align-items: center;
+  display: flex;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
-#stage {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+div .main_container {
+  background: #1b1f1f;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+div .main_container img {
+  margin-top: 20vh;
+}
+
+#subtitle {
+  margin-top: 40px;
+  color: #aad446;
+}
+
+.date {
+  background-color: #aad446;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  width: 170px;
+  height: 15px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.horizontal_separator {
+  background: #444;
+
+  height: 1px;
+  width: 700px;
+  margin-top: 50px;
+
+}
+
+#textform {
+  margin-top: 60px;
+  color: #879a99;
+  text-align: center;
+}
+
+.input_container {
+  background: #4e5f5f;
+  height: 40px;
+  width: 450px;
+  margin-top: 10px;
+  border-radius: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input_container input {
+  background: none;
+  width: 500px;
+  border: 0;
+  padding: 16px;
+
+  outline: none;
+}
+
+.input_container input::placeholder {
+  color: #aad446;
+  font-weight: bold;
+}
+
+.btn_submit {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 28px;
+  color: #1b1f1f;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.btn_submit:hover,
+.btn_submit:focus {
+  color: #879a99;
+
+  outline: none;
+  transition: all 0.5s ease;
+}
+
+#validation_msg {
+  margin-top: 5px;
+  display: block;
+  color: #000;
+  font-weight: 300;
+  font-size: 15px;
+  font-style: italic;
+  padding: 5px;
+}
+
+.btn_submit:disabled {
+  cursor: not-allowed;
+}
+
+
+.language {
+  margin-top: 40px;
+  right: 5%;
+  position: absolute;
+}
+
+.btn_language {
+  padding: 5px;
+  width: 86px;
+  background-color: #1b1f1f;
+  color: #879a99;
+  border: 2px solid #879a99;
+  border-radius: 25px;
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.btn_language:hover,
+.btn_language:focus {
+  background-color: #879a99;
+  color: #1b1f1f;
+  border: 2px solid #1b1f1f;
+
+  outline: none;
+  transition: all 0.35s ease;
 }
